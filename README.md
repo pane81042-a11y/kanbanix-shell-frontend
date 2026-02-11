@@ -1,27 +1,24 @@
 # Kanbanix Shell Frontend
 
-Kanbanix Shell is the host application for the Kanbanix microfrontend architecture.
+Kanbanix Shell is the host application in the Kanbanix microfrontend architecture.
 
-It is responsible for:
+It provides the global layout, routing, authentication state, and runtime integration of independently deployed microfrontends.
 
-- Routing between microfrontends
-- Layout structure (sidebar, header, workspace)
-- Authentication state management
-- Loading remote modules via Module Federation
-- Global state initialization
+## Purpose
+
+The shell ensures that all Kanbanix microfrontends operate as a unified application while remaining independently deployable and scalable.
+
+## Responsibilities
+
+- Application routing
+- Global layout (sidebar, header, workspace)
+- Authentication state handling
+- Loading remote microfrontends via Module Federation
 - Shared dependency management
+- Global error boundaries
+- Environment configuration
 
-## Architecture
-
-This application uses:
-
-- React
-- Webpack Module Federation
-- React Router
-- Context API / Redux (optional)
-- Shared UI library
-
-The shell dynamically loads:
+## Integrated Microfrontends
 
 - Board Frontend
 - Task Frontend
@@ -30,11 +27,43 @@ The shell dynamically loads:
 - Admin Frontend
 - Auth Frontend
 
-## Purpose
+Each microfrontend is deployed independently and dynamically loaded at runtime.
 
-The shell ensures microfrontends remain independently deployable while presenting a unified user experience.
+## Tech Stack
 
-## Deployment
+- React
+- Webpack Module Federation
+- React Router
+- Context API or Redux
+- Axios for API communication
 
-Each microfrontend can be deployed independently.
-The shell integrates remote entry files at runtime.
+## AWS Always Free Tier Deployment
+
+This application is deployed using a fully serverless architecture:
+
+- Amazon S3 for static hosting
+- Amazon CloudFront for CDN distribution
+- AWS IAM for deployment permissions
+- GitHub Actions for CI/CD
+- Route 53 (optional custom domain)
+
+Deployment flow:
+1. Code pushed to GitHub
+2. GitHub Actions builds the project
+3. Build artifacts uploaded to S3
+4. CloudFront cache invalidated
+
+## Scalability
+
+- Fully static frontend
+- CDN accelerated
+- Independent microfrontend deployments
+- No server management required
+
+## Portfolio Value
+
+Demonstrates:
+- Microfrontend architecture
+- Serverless AWS deployment
+- Scalable frontend system design
+- Enterprise-level modular architecture
